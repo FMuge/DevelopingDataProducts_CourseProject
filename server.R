@@ -14,14 +14,11 @@ shinyServer(function(input, output) {
   output$oselection <- renderPrint({input$selection})
 
   output$newPlot <- renderPlot({
-     for (i in 1:length(input$selection)) {
-     counts <- table(happy$happy, happy[,input$selection[i]])
-     barplot(counts, main=paste("Happiness by", input$selection[i]),
-              xlab=input$selection[i], col=c("green","blue","navy"),
+     counts <- table(happy$happy, happy[,input$selection])
+     barplot(counts, main=paste("Happiness by", input$selection),
+              xlab=input$selection, col=c("green","blue","navy"),
               legend = rownames(counts))
      
-     }
-
   })
 
 })
